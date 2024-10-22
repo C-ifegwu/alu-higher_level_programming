@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Compile the Python file specified in $PYFILE
+echo "Compiling $PYFILE ..."
+
+# Use python3 to compile the file
+python3 -m py_compile $PYFILE
+
+# Get the basename of the file without the directory and extension
+filename=$(basename "$PYFILE")
+
+# Move and rename the compiled file from the __pycache__ directory to the current directory
+mv __pycache__/${filename%.*}.cpython-*.pyc ./${PYFILE}c
